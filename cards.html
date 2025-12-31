@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Surprise</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(https://i.pinimg.com/736x/f7/94/0e/f7940eaa211f1cb81da72d84e3ca3ec3.jpg);
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .moving-image {
+            position: absolute;
+            width: 500px;
+            height: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            z-index: 1;
+        }
+        .image1 {
+            animation: moveLeftToRight 3s ease-in-out 0s forwards, fadeOut 0.5s ease-in-out 2.5s forwards;
+        }
+        .image2 {
+            animation: moveRightToLeft 3s ease-in-out 3s forwards, fadeOut 0.5s ease-in-out 5.5s forwards;
+        }
+        .image3 {
+            animation: moveLeftToRight 3s ease-in-out 6s forwards, fadeOut 0.5s ease-in-out 8.5s forwards;
+        }
+        .image4 {
+            animation: moveRightToLeft 3s ease-in-out 9s forwards, fadeOut 0.5s ease-in-out 11.5s forwards;
+        }
+        .image5 {
+            animation: moveLeftToRight 3s ease-in-out 12s forwards, fadeOut 0.5s ease-in-out 14.5s forwards;
+        width: 600px;}
+        .gift {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #ffd700, #ff5722, #e91e63);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.5s ease;
+            opacity: 0;
+            animation: giftAppear 1s ease-in-out 15s forwards;
+            z-index: 2;
+        }
+        .gift:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .gift.open {
+            animation: openGift 1s ease-in-out forwards;
+        }
+        @keyframes moveLeftToRight {
+            0% { left: -200px; top: 50%; transform: translateY(-50%); opacity: 1; }
+            100% { left: calc(100vw + 200px); top: 50%; transform: translateY(-50%); opacity: 1; }
+        }
+        @keyframes moveRightToLeft {
+            0% { right: -200px; top: 50%; transform: translateY(-50%); opacity: 1; }
+            100% { right: calc(100vw + 200px); top: 50%; transform: translateY(-50%); opacity: 1; }
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        @keyframes giftAppear {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        @keyframes openGift {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2) rotateY(90deg); }
+            100% { transform: translate(-50%, -50%) scale(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Moving Images -->
+    <img class="moving-image image1" src="./cutie1.jpeg" alt="Image 1">
+    <img class="moving-image image2" src="./cutie2.jpeg" alt="Image 2">
+    <img class="moving-image image3" src="./cutie3.jpeg" alt="Image 3">
+    <img class="moving-image image4" src="./cutie4.jpeg" alt="Image 4">
+    <img class="moving-image image5" src="./cutie5.jpeg" alt="Image 5">
+
+    <!-- Gift -->
+    <div class="gift" id="gift"><img src="hhhhh.png" alt=""></div>
+
+    <script>
+        const gift = document.getElementById('gift');
+        gift.addEventListener('click', () => {
+            gift.classList.add('open');
+            setTimeout(() => {
+                window.location.href = 'black.html';
+            }, 1000); // Delay to allow open animation
+        });
+    </script>
+</body>
+</html>
