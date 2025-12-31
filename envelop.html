@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envelope Surprise</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #a8edea, #fed6e3, #d299c2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .envelope {
+            position: relative;
+            margin-top: 10px;
+            width: 500px;
+            height: 350px;
+            background: #f8f9fa;
+            border: 2px solid #e91e63;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: openEnvelope 2s ease-in-out forwards;
+        }
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: #e91e63;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: top;
+            animation: flapOpen 2s ease-in-out forwards;
+        }
+        .card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 150px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+        align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            opacity: 0;
+            animation: slideCard 2s ease-in-out 2s forwards;
+            padding: 20px;
+            text-align: center;
+            width: 400px;
+            height: 300px;
+        }
+        .card img {
+            width: 100px;
+            height: 270px;
+            border-radius: 50%;
+            
+        
+        }
+        .card p {
+            color: #d63384;
+            font-size: 16px;
+            margin: 3px 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .next-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .next-btn:hover {
+            background: #c2185b;
+        }
+        @keyframes openEnvelope {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes flapOpen {
+            0% { transform: rotateX(0deg); }
+            100% { transform: rotateX(-180deg); }
+        }
+        @keyframes slideCard {
+            0% { opacity: 0; transform: translate(-50%, -50%) translateY(50px); }
+            100% { opacity: 1; transform: translate(-50%, -50%) translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope">
+        <div class="flap"></div>
+        <div class="card">
+            <p>Every second with you is a tresure every tomorrow a promise no one could ever match the spark you bring into my life MY LOVE BABY IRTAZA</p>
+           
+            <img src="./3wy (1).png" alt="Picture 2">
+            <p>You mean the world to me.</p>
+            <button class="next-btn" onclick="window.location.href='cards.html'">Next</button>
+        </div>
+    </div>
+</body>
+</html>
