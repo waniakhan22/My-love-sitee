@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shy 💕</title>
+<style>
+body{
+  margin:0;
+  background:rgb(252, 254, 252);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  font-family:sans-serif;
+}
+.box{text-align:center;
+p{
+    font-size: 30px;
+    font-weight: 800;
+}
+}
+img{width:260px;margin: 0;}
+button{
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:#ffb6c1;
+  font-size:16px;
+  cursor:pointer;
+  width: 150px;
+  height: 60px;
+}
+</style>
+</head>
+<body>
+
+<div class="box" id="content">
+  <img src="./07991d90dec752563e233c7099a4feb1.gif">
+  <p>Kiss me first </p>
+  <button onclick="next()">Next</button>
+</div>
+
+<script>
+function next(){
+  document.getElementById("content").innerHTML = `
+    <img src="./ii.gif">
+    <p>Aww I'm blushing 🥺</p>
+    <button onclick="location.href='final.html'">Next</button>
+  `;
+}
+</script>
+
+</body>
+</html>
