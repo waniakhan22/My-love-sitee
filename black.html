@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Love Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-pink: #ff007f;
+            --neon-blue: #00d4ff;
+            --bg-dark: #050505;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-dark);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* Ambient Glow in Background */
+        .ambient-light {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 0, 127, 0.15) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            filter: blur(50px);
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        /* Transitions */
+        #page1 { opacity: 1; transform: scale(1); }
+        #page1.hidden { opacity: 0; transform: scale(0.8) translateY(-100px); pointer-events: none; }
+
+        #page2 { opacity: 0; transform: translateY(100px); visibility: hidden; }
+        #page2.active { opacity: 1; transform: translateY(0); visibility: visible; }
+
+        /* Neon Typography */
+        .neon-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(4rem, 12vw, 8rem);
+            color: #fff;
+            text-shadow: 0 0 10px #fff, 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink), 0 0 80px var(--neon-pink);
+            margin-bottom: 30px;
+            animation: flicker 2s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 0 0 10px #fff, 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
+            }
+            20%, 22%, 24%, 55% { text-shadow: none; }
+        }
+
+        /* Advanced Neon Buttons */
+        .neon-btn {
+            background: transparent;
+            border: 2px solid var(--neon-pink);
+            color: white;
+            padding: 18px 45px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: inset 0 0 10px var(--neon-pink), 0 0 15px var(--neon-pink);
+        }
+
+        .neon-btn:hover {
+            background: var(--neon-pink);
+            box-shadow: 0 0 50px var(--neon-pink);
+            color: black;
+            font-weight: bold;
+        }
+
+        .blue-btn {
+            border-color: var(--neon-blue);
+            box-shadow: inset 0 0 10px var(--neon-blue), 0 0 15px var(--neon-blue);
+        }
+
+        .blue-btn:hover {
+            background: var(--neon-blue);
+            box-shadow: 0 0 50px var(--neon-blue);
+        }
+
+        /* Floating Message Box */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            padding: 50px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .sub-text {
+            color: var(--neon-blue);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* Particles */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: moveStars 10s linear infinite;
+        }
+
+        @keyframes moveStars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100vh); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-light"></div>
+
+    <div id="page1" class="page">
+        <h1 class="neon-title">I Love You</h1>
+        <button class="neon-btn" onclick="showNextPage()">Continue</button>
+    </div>
+
+    <div id="page2" class="page">
+        <div class="glass-card">
+            <h2 class="sub-text">You are Special!</h2>
+            <p style="margin-bottom: 30px; line-height: 1.6;">Har pal jo tumhare saath guzarta hai, woh mere liye aik nayi umeed lata hai.</p>
+            <button class="neon-btn blue-btn" onclick="startNextRound()">Next Round</button>
+        </div>
+    </div>
+
+    <script>
+        // Transition between Page 1 and Page 2
+        function showNextPage() {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.add('active');
+            // Change ambient light color to blue for new feel
+            document.querySelector('.ambient-light').style.background = "radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 70%)";
+        }
+
+        // Direct to question.html
+        function startNextRound() {
+            window.location.href = "qqq.html";
+        }
+
+        // Star Background effect
+        function createStars() {
+            for(let i=0; i<80; i++) {
+                let star = document.createElement('div');
+                star.className = 'star';
+                let size = Math.random() * 3 + 'px';
+                star.style.width = size;
+                star.style.height = size;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                document.body.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
+</html>
